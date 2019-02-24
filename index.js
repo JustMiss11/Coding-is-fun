@@ -33,14 +33,15 @@ bot.on("message", message => {
        let author1 = message.author.username;
        let user = message.mentions.members.first();
        
-       if(cmd === "help") {
+       if(cmd === `${prefix}help`) {
          var embed = new Discord.RichEmbed()
          .setAuthor(`${message.guild.name}`)
+         .addField("serverInfo", "Shows info about server")
          .setColor("GREEN");
          message.channel.send(embed)
        }
        
-       if(cmd === "serverInfo"){
+       if(cmd === `${prefix}serverInfo`){
               let emb = new Discord.RichEmbed()
               .setColor('00ff54')
               .setTitle('Server Info')
