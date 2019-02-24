@@ -60,5 +60,12 @@ bot.on("message", message => {
               .addField(`Server Created`, message.guild.createdAt, true);
               message.channel.send(emb);
        }
+       if(cmd === `${prefix}serverIcon`){
+              var embed = new Discord.RichEmbed()
+              .setAuthor(`${message.guild.name}`)
+              .setImage(message.guild.iconURL)
+              .setColor("BLUE");
+              message.channel.send(embed)
+       }
 }); //reload
 bot.login(process.env.token)
