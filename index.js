@@ -39,5 +39,5 @@ bot.on("message", message => {
          .setColor("GREEN");
          message.channel.send(embed)
        })
-});
+}); //reload
 bot.login(process.env.token)
