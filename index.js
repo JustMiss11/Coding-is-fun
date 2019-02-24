@@ -34,8 +34,10 @@ bot.on("message", message => {
        let user = message.mentions.members.first();
        
        if(cmd === "help" {
-         var embed = nee Discord.RichEmbed()
+         var embed = new Discord.RichEmbed()
          .setAuthor(`${message.guild.name}`)
          .setColor("GREEN");
          message.channel.send(embed)
        })
+});
+bot.login(process.env.token)
