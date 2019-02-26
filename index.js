@@ -83,7 +83,7 @@ bot.on("message", async message => {
          
          db.set(`prefix_{message.guild.id}`, args.join(" ")).then(i => {
                 message.channel.send(`:white_check_mark: || **Sucesfully changed prefix for this guild.** ({i})`);
-         }
+         })
        }
         
             
