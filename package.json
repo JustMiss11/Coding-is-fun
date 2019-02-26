@@ -13,6 +13,7 @@
     "node": ">=7.0.0"
   },
   "dependencies": {
-    "discord.js": "^11.3.2"
+    "discord.js": "^11.3.2",
+    "quick.db": "^8.0.0"
   }
 }
