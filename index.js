@@ -24,7 +24,7 @@ bot.on("ready", () => {
 });
 
 
-bot.on("message", message => {
+bot.on("message", async message => {
        //quick.db
        let fetched = await db.fetch(`prefix_{message.guild.id}`);
        if(fetched === null) prefix = "</>";
