@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const prefix = "</>";
+const db = require("quick.db");
 
 const bot = new Discord.Client();
 
@@ -24,6 +25,12 @@ bot.on("ready", () => {
 
 
 bot.on("message", message => {
+       //quick.db
+       let fetched = await db.fetch(`prefix_{message.guild.id}`);
+       if(fetched === null) prefix = "</>";
+       else prefix = fetched;
+       //bot
+       
        if(message.author.bot) return;
        if(!message.content.startsWith(prefix)) return;
        if(message.channel.dm) return message.author.send("Commands wont work in here.");
@@ -32,15 +39,18 @@ bot.on("message", message => {
        let content = message.content;
        let author1 = message.author.username;
        let user = message.mentions.members.first();
+       let args = messageArray.slice(1)
        
+       //HELP CMD
        if(cmd === `${prefix}help`) {
          var embed = new Discord.RichEmbed()
          .setAuthor(`${message.guild.name}`)
          .addField("serverInfo", "Shows info about server")
+         .addField("serverIcon", "Shows icon of the server")
          .setColor("GREEN");
          message.channel.send(embed)
        }
-       
+       //SERVER INFO CMD
        if(cmd === `${prefix}serverInfo`){
               let emb = new Discord.RichEmbed()
               .setColor('00ff54')
@@ -60,6 +70,7 @@ bot.on("message", message => {
               .addField(`Server Created`, message.guild.createdAt, true);
               message.channel.send(emb);
        }
+       //SERVER ICON CMD
        if(cmd === `${prefix}serverIcon`){
               var embed = new Discord.RichEmbed()
               .setAuthor(`${message.guild.name}`)
@@ -67,5 +78,14 @@ bot.on("message", message => {
               .setColor("BLUE");
               message.channel.send(embed)
        }
+       if(cmd === `${prefix}set-prefix`){
+         if(!message.member.hasPermission('MANAGE_SERVER')) return message.channel.send(":x: || **You dont have Manage Server permission!");
+         
+         db.set(`prefix_{message.guild.id}`, args.join(" ")).then(i => {
+                message.channel.send(`:white_check_mark: || **Sucesfully changed prefix for this guild.** ({i})`);
+         }
+       }
+        
+            
 }); //reload
 bot.login(process.env.token)
