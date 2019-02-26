@@ -14,7 +14,7 @@ if (jsfile.length <= 0) return console.log("Cmds not found!")
 console.log(`Loaded ${jsfile.length} cmds`)
 jsfile.forEach((f, i) => {
     let props = require(`./commands/${f}`)
-    robot.commands.set(props.help.name, props)
+    bot.commands.set(props.help.name, props)
 })
  })
 
