@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const prefix = "</>";
+
 const db = require("quick.db");
 const fs = require("fs");
 
@@ -41,8 +41,9 @@ bot.on("ready", () => {
 
 bot.on("message", async message => {
        //quick.db
+       var prefix = '</>';
        let fetched = await db.fetch(`prefix_${message.guild.id}`);
-       if(fetched === null) prefix = "</>";
+       if (fetched === null) prefix = '</>';
        else prefix = fetched;
        //bot
        
