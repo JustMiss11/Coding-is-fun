@@ -42,9 +42,9 @@ bot.on("ready", () => {
 bot.on("message", async message => {
        //quick.db
        var prefix = '!';
-       let fetched = await db.fetch(`prefix_${message.guild.id}`);
-       if (fetched === null) prefix = '!';
-       else prefix = fetched;
+      // let fetched = await db.fetch(`prefix_${message.guild.id}`);
+     //  if (fetched === null) prefix = '!';
+    //   else prefix = fetched;
        //bot
        
        if(message.author.bot) return;
