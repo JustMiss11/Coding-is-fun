@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 
-module.exports.run = async (bot, message, args) => {
+exports.run = async (bot, message, args, config) => {
   var embed = new Discord.RichEmbed()
          .setAuthor(`${message.guild.name}`)
          .addField("serverInfo", "Shows info about server")
