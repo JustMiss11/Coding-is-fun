@@ -60,11 +60,11 @@ bot.on("message", async message => {
        if(!message.content.startsWith(prefix)) return;
        if(message.channel.dm) return message.author.send("Commands wont work in here.");
        let messageArray = message.content.split(" ");
-       let cmd = messageArray[0];
-       let content = message.content;
-       let author1 = message.author.username;
-       let user = message.mentions.members.first();
-       let args = messageArray.slice(1)
+    //   let cmd = messageArray[0];
+       //let content = message.content;
+      // let author1 = message.author.username;
+      // let user = message.mentions.members.first();
+       let args = messageArray.slice(22)
         
             
 }); //reload
