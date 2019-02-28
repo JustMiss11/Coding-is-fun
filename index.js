@@ -48,7 +48,7 @@ bot.on("ready", () => {
 });
 
 
-bot.on("message", async message) {
+bot.on("message", message) {
   let prefix = "</>"
   let messageArray = message.content.split(" ");
   let msg = messageArray[0];
