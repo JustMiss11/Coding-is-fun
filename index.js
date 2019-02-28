@@ -48,53 +48,23 @@ bot.on("ready", () => {
 });
 
 
-bot.on("message", async message => {
-       //quick.db
-       let prefix = bcf.prefix;
-      // let fetched = await db.fetch(`prefix_${message.guild.id}`);
-     //  if (fetched === null) prefix = '!';
-    //   else prefix = fetched;
-       //bot
-       
-       if(message.author.bot) return;
-       if(!message.content.startsWith(prefix)) return;
-       if(message.channel.dm) return message.author.send("Commands wont work in here.");
-       let messageArray = message.content.split(" ");
-       if(message.content === `{prefix}help`) {
-         var embed = new Discord.RichEmbed()
-         .setAuthor(`${message.guild.name}`)
-         .addField("serverInfo", "Shows info about server")
-         .addField("serverIcon", "Shows icon of the server")
-         .setColor("GREEN");
-         message.channel.send(embed)
-       };
-       
-  if(message.content === `{prefix}server-info`) {
-     let emb = new Discord.RichEmbed()
-              .setColor('00ff54')
-              .setTitle('Server Info')
-              .addField(`Server Name`, message.guild.name, true)
-              .setThumbnail(message.guild.iconURL)
-              .addField(`Owner`, message.guild.owner, true)
-              .addField(`ID`, message.guild.id, true)
-              .addField(`Channels Count`, message.guild.channels.size, true)
-              .addField(`Roles Count`, message.guild.roles.size, true)
-              .addField(`Emojis Count`, message.guild.emojis.size, true)
-              .addField(`Members Count`, message.guild.members.size, true)
-              .addField(`Users Count`, message.guild.members.filter(member => !member.user.bot).size, true)
-              .addField(`Bots Count`, message.guild.members.filter(member => member.user.bot).size, true)
-              .addField(`AFK Channel`, message.guild.afkChannel, true)
-              .addField(`Server Region`, message.guild.region, true)
-              .addField(`Server Created`, message.guild.createdAt, true);
-              message.channel.send(emb);
-  };
-  if(message.content === `{prefix}server-icon`){
-      var embed = new Discord.RichEmbed()
-              .setAuthor(`${message.guild.name}`)
-              .setImage(message.guild.iconURL)
-              .setColor("BLUE");
-              message.channel.send(embed)
-  };
+bot.on("message", async message) {
+  let prefix = "</>"
+  let messageArray = message.content.split(" ");
+  let msg = messageArray[0];
+  
+  if(!message.content.startsWith(prefix)) return;
+  if(message.channel === "dm") return message.author.send(":x: || **Commands dont work in here**");
+  if(message.author.bot) return;
+  
+  if(msg.content === `${prefix}help`){
+    var embed = new Discord.RichEmbed()
+    .setAuthor(`${message.guild.name}`, message.guild.iconURL)
+    .setColor("GREEN")
+    .addBlankField(true)
+    .addField(`${prefix}help`, "Shows help.", true)
+  }
+}
             
 }); //reload
 bot.login(process.env.token)
