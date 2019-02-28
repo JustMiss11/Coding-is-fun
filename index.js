@@ -48,7 +48,7 @@ bot.on("ready", () => {
 });
 
 
-bot.on("message", message) {
+bot.on("message", message => {
   let prefix = "</>"
   let messageArray = message.content.split(" ");
   let msg = messageArray[0];
@@ -64,7 +64,7 @@ bot.on("message", message) {
     .addBlankField(true)
     .addField(`${prefix}help`, "Shows help.", true)
   }
-}
+});
             
 }); //reload
 bot.login(process.env.token)
