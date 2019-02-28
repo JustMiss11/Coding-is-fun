@@ -65,6 +65,5 @@ bot.on("message", message => {
     .addField(`${prefix}help`, "Shows help.", true)
   }
 });
-            
-}); //reload
+
 bot.login(process.env.token)
