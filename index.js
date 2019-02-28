@@ -49,7 +49,7 @@ bot.on("ready", () => {
 
 
 bot.on("message", message => {
-  let prefix = "</>"
+  let prefix = "</>";
   let messageArray = message.content.split(" ");
   let msg = messageArray[0];
   
